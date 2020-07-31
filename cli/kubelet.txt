@@ -130,6 +130,7 @@ Flags:
                 CustomCPUCFSQuotaPeriod=true|false (ALPHA - default=false)
                 DefaultPodTopologySpread=true|false (ALPHA - default=false)
                 DevicePlugins=true|false (BETA - default=true)
+                DisableAcceleratorUsageMetrics=true|false (ALPHA - default=false)
                 DynamicKubeletConfig=true|false (BETA - default=true)
                 EndpointSlice=true|false (BETA - default=true)
                 EndpointSliceProxying=true|false (BETA - default=true)

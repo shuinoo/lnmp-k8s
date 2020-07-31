@@ -1,5 +1,5 @@
-I0724 05:39:31.349568   35587 registry.go:173] Registering SelectorSpread plugin
-I0724 05:39:31.349605   35587 registry.go:173] Registering SelectorSpread plugin
+I0731 04:42:30.581021   36816 registry.go:173] Registering SelectorSpread plugin
+I0731 04:42:30.581058   36816 registry.go:173] Registering SelectorSpread plugin
 The Kubernetes scheduler is a control plane process which assigns
 Pods to Nodes. The scheduler determines which Nodes are valid placements for
 each Pod in the scheduling queue according to constraints and available
@@ -127,6 +127,7 @@ Feature gate flags:
                                       CustomCPUCFSQuotaPeriod=true|false (ALPHA - default=false)
                                       DefaultPodTopologySpread=true|false (ALPHA - default=false)
                                       DevicePlugins=true|false (BETA - default=true)
+                                      DisableAcceleratorUsageMetrics=true|false (ALPHA - default=false)
                                       DynamicKubeletConfig=true|false (BETA - default=true)
                                       EndpointSlice=true|false (BETA - default=true)
                                       EndpointSliceProxying=true|false (BETA - default=true)
