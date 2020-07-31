@@ -48,15 +48,13 @@ Flags:
                                                      CSIMigrationGCEComplete=true|false (ALPHA - default=false)
                                                      CSIMigrationOpenStack=true|false (BETA - default=false)
                                                      CSIMigrationOpenStackComplete=true|false (ALPHA - default=false)
-                                                     CSIMigrationvSphere=true|false (BETA - default=false)
-                                                     CSIMigrationvSphereComplete=true|false (BETA - default=false)
+                                                     CSIMigrationvSphere=true|false (ALPHA - default=false)
+                                                     CSIMigrationvSphereComplete=true|false (ALPHA - default=false)
                                                      CSIStorageCapacity=true|false (ALPHA - default=false)
-                                                     CSIVolumeFSGroupPolicy=true|false (ALPHA - default=false)
                                                      ConfigurableFSGroupPolicy=true|false (ALPHA - default=false)
                                                      CustomCPUCFSQuotaPeriod=true|false (ALPHA - default=false)
                                                      DefaultPodTopologySpread=true|false (ALPHA - default=false)
                                                      DevicePlugins=true|false (BETA - default=true)
-                                                     DisableAcceleratorUsageMetrics=true|false (ALPHA - default=false)
                                                      DynamicKubeletConfig=true|false (BETA - default=true)
                                                      EndpointSlice=true|false (BETA - default=true)
                                                      EndpointSliceProxying=true|false (BETA - default=true)
@@ -65,7 +63,6 @@ Flags:
                                                      ExpandInUsePersistentVolumes=true|false (BETA - default=true)
                                                      ExpandPersistentVolumes=true|false (BETA - default=true)
                                                      ExperimentalHostUserNamespaceDefaulting=true|false (BETA - default=false)
-                                                     GenericEphemeralVolume=true|false (ALPHA - default=false)
                                                      HPAScaleToZero=true|false (ALPHA - default=false)
                                                      HugePageStorageMediumSize=true|false (BETA - default=true)
                                                      HyperVContainer=true|false (ALPHA - default=false)
@@ -113,7 +110,7 @@ Flags:
   -h, --help                                         help for kube-proxy
       --hostname-override string                     If non-empty, will use this string as identification instead of the actual hostname.
       --iptables-masquerade-bit int32                If using the pure iptables proxy, the bit of the fwmark space to mark packets requiring SNAT with.  Must be within the range [0, 31]. (default 14)
-      --iptables-min-sync-period duration            The minimum interval of how often the iptables rules can be refreshed as endpoints and services change (e.g. '5s', '1m', '2h22m'). (default 1s)
+      --iptables-min-sync-period duration            The minimum interval of how often the iptables rules can be refreshed as endpoints and services change (e.g. '5s', '1m', '2h22m').
       --iptables-sync-period duration                The maximum interval of how often iptables rules are refreshed (e.g. '5s', '1m', '2h22m').  Must be greater than 0. (default 30s)
       --ipvs-exclude-cidrs strings                   A comma-separated list of CIDR's which the ipvs proxier should not touch when cleaning up IPVS rules.
       --ipvs-min-sync-period duration                The minimum interval of how often the ipvs rules can be refreshed as endpoints and services change (e.g. '5s', '1m', '2h22m').

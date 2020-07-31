@@ -26,7 +26,7 @@ Generic flags:
       --configure-cloud-routes                   Should CIDRs allocated by allocate-node-cidrs be configured on the cloud provider. (default true)
       --controller-start-interval duration       Interval between starting controller managers.
       --controllers strings                      A list of controllers to enable. '*' enables all on-by-default controllers, 'foo' enables the controller named 'foo', '-foo' disables the controller named 'foo'.
-                                                 All controllers: attachdetach, bootstrapsigner, cloud-node-lifecycle, clusterrole-aggregation, cronjob, csrapproving, csrcleaner, csrsigning, daemonset, deployment, disruption, endpoint, endpointslice, endpointslicemirroring, ephemeral-volume, garbagecollector, horizontalpodautoscaling, job, namespace, nodeipam, nodelifecycle, persistentvolume-binder, persistentvolume-expander, podgc, pv-protection, pvc-protection, replicaset, replicationcontroller, resourcequota, root-ca-cert-publisher, route, service, serviceaccount, serviceaccount-token, statefulset, tokencleaner, ttl, ttl-after-finished
+                                                 All controllers: attachdetach, bootstrapsigner, cloud-node-lifecycle, clusterrole-aggregation, cronjob, csrapproving, csrcleaner, csrsigning, daemonset, deployment, disruption, endpoint, endpointslice, garbagecollector, horizontalpodautoscaling, job, namespace, nodeipam, nodelifecycle, persistentvolume-binder, persistentvolume-expander, podgc, pv-protection, pvc-protection, replicaset, replicationcontroller, resourcequota, root-ca-cert-publisher, route, service, serviceaccount, serviceaccount-token, statefulset, tokencleaner, ttl, ttl-after-finished
                                                  Disabled-by-default controllers: bootstrapsigner, tokencleaner (default [*])
       --external-cloud-volume-plugin string      The plugin to use when cloud provider is set to external. Can be empty, should only be set when cloud-provider is external. Currently used to allow node and volume controllers to work for in tree cloud providers.
       --feature-gates mapStringBool              A set of key=value pairs that describe feature gates for alpha/experimental features. Options are:
@@ -54,15 +54,13 @@ Generic flags:
                                                  CSIMigrationGCEComplete=true|false (ALPHA - default=false)
                                                  CSIMigrationOpenStack=true|false (BETA - default=false)
                                                  CSIMigrationOpenStackComplete=true|false (ALPHA - default=false)
-                                                 CSIMigrationvSphere=true|false (BETA - default=false)
-                                                 CSIMigrationvSphereComplete=true|false (BETA - default=false)
+                                                 CSIMigrationvSphere=true|false (ALPHA - default=false)
+                                                 CSIMigrationvSphereComplete=true|false (ALPHA - default=false)
                                                  CSIStorageCapacity=true|false (ALPHA - default=false)
-                                                 CSIVolumeFSGroupPolicy=true|false (ALPHA - default=false)
                                                  ConfigurableFSGroupPolicy=true|false (ALPHA - default=false)
                                                  CustomCPUCFSQuotaPeriod=true|false (ALPHA - default=false)
                                                  DefaultPodTopologySpread=true|false (ALPHA - default=false)
                                                  DevicePlugins=true|false (BETA - default=true)
-                                                 DisableAcceleratorUsageMetrics=true|false (ALPHA - default=false)
                                                  DynamicKubeletConfig=true|false (BETA - default=true)
                                                  EndpointSlice=true|false (BETA - default=true)
                                                  EndpointSliceProxying=true|false (BETA - default=true)
@@ -71,7 +69,6 @@ Generic flags:
                                                  ExpandInUsePersistentVolumes=true|false (BETA - default=true)
                                                  ExpandPersistentVolumes=true|false (BETA - default=true)
                                                  ExperimentalHostUserNamespaceDefaulting=true|false (BETA - default=false)
-                                                 GenericEphemeralVolume=true|false (ALPHA - default=false)
                                                  HPAScaleToZero=true|false (ALPHA - default=false)
                                                  HugePageStorageMediumSize=true|false (BETA - default=true)
                                                  HyperVContainer=true|false (ALPHA - default=false)
@@ -181,17 +178,9 @@ Attachdetach controller flags:
 
 Csrsigning controller flags:
 
-      --cluster-signing-cert-file string                         Filename containing a PEM-encoded X509 CA certificate used to issue cluster-scoped certificates.  If specified, no more specific --cluster-signing-* flag may be specified.
-      --cluster-signing-duration duration                        The length of duration signed certificates will be given. (default 8760h0m0s)
-      --cluster-signing-key-file string                          Filename containing a PEM-encoded RSA or ECDSA private key used to sign cluster-scoped certificates.  If specified, no more specific --cluster-signing-* flag may be specified.
-      --cluster-signing-kube-apiserver-client-cert-file string   Filename containing a PEM-encoded X509 CA certificate used to issue certificates for the kubernetes.io/kube-apiserver-client signer.  If specified, --cluster-signing-{cert,key}-file must not be set.
-      --cluster-signing-kube-apiserver-client-key-file string    Filename containing a PEM-encoded RSA or ECDSA private key used to sign certificates for the kubernetes.io/kube-apiserver-client signer.  If specified, --cluster-signing-{cert,key}-file must not be set.
-      --cluster-signing-kubelet-client-cert-file string          Filename containing a PEM-encoded X509 CA certificate used to issue certificates for the kubernetes.io/kube-apiserver-client-kubelet signer.  If specified, --cluster-signing-{cert,key}-file must not be set.
-      --cluster-signing-kubelet-client-key-file string           Filename containing a PEM-encoded RSA or ECDSA private key used to sign certificates for the kubernetes.io/kube-apiserver-client-kubelet signer.  If specified, --cluster-signing-{cert,key}-file must not be set.
-      --cluster-signing-kubelet-serving-cert-file string         Filename containing a PEM-encoded X509 CA certificate used to issue certificates for the kubernetes.io/kubelet-serving signer.  If specified, --cluster-signing-{cert,key}-file must not be set.
-      --cluster-signing-kubelet-serving-key-file string          Filename containing a PEM-encoded RSA or ECDSA private key used to sign certificates for the kubernetes.io/kubelet-serving signer.  If specified, --cluster-signing-{cert,key}-file must not be set.
-      --cluster-signing-legacy-unknown-cert-file string          Filename containing a PEM-encoded X509 CA certificate used to issue certificates for the kubernetes.io/legacy-unknown signer.  If specified, --cluster-signing-{cert,key}-file must not be set.
-      --cluster-signing-legacy-unknown-key-file string           Filename containing a PEM-encoded RSA or ECDSA private key used to sign certificates for the kubernetes.io/legacy-unknown signer.  If specified, --cluster-signing-{cert,key}-file must not be set.
+      --cluster-signing-cert-file string    Filename containing a PEM-encoded X509 CA certificate used to issue cluster-scoped certificates (default "/etc/kubernetes/ca/ca.pem")
+      --cluster-signing-duration duration   The length of duration signed certificates will be given. (default 8760h0m0s)
+      --cluster-signing-key-file string     Filename containing a PEM-encoded RSA or ECDSA private key used to sign cluster-scoped certificates (default "/etc/kubernetes/ca/ca.key")
 
 Deployment controller flags:
 
@@ -215,12 +204,6 @@ Endpointslice controller flags:
       --concurrent-service-endpoint-syncs int32       The number of service endpoint syncing operations that will be done concurrently. Larger number = faster endpoint slice updating, but more CPU (and network) load. Defaults to 5. (default 5)
       --endpointslice-updates-batch-period duration   The length of endpoint slice updates batching period. Processing of pod changes will be delayed by this duration to join them with potential upcoming updates and reduce the overall number of endpoints updates. Larger number = higher endpoint programming latency, but lower number of endpoints revision generated
       --max-endpoints-per-slice int32                 The maximum number of endpoints that will be added to an EndpointSlice. More endpoints per slice will result in less endpoint slices, but larger resources. Defaults to 100. (default 100)
-
-Endpointslicemirroring controller flags:
-
-      --mirroring-concurrent-service-endpoint-syncs int32       The number of service endpoint syncing operations that will be done concurrently by the EndpointSliceMirroring controller. Larger number = faster endpoint slice updating, but more CPU (and network) load. Defaults to 5. (default 5)
-      --mirroring-endpointslice-updates-batch-period duration   The length of EndpointSlice updates batching period for EndpointSliceMirroring controller. Processing of EndpointSlice changes will be delayed by this duration to join them with potential upcoming updates and reduce the overall number of EndpointSlice updates. Larger number = higher endpoint programming latency, but lower number of endpoints revision generated
-      --mirroring-max-endpoints-per-subset int32                The maximum number of endpoints that will be added to an EndpointSlice by the EndpointSliceMirroring controller. More endpoints per slice will result in less endpoint slices, but larger resources. Defaults to 100. (default 1000)
 
 Garbagecollector controller flags:
 
@@ -305,7 +288,7 @@ Metrics flags:
 Logs flags:
 
       --logging-format string   Sets the log format. Permitted formats: "text", "json".
-                                Non-default formats don't honor these flags: --add_dir_header, --alsologtostderr, --log_backtrace_at, --log_dir, --log_file, --log_file_max_size, --logtostderr, --skip_headers, --skip_log_headers, --stderrthreshold, --vmodule, --log-flush-frequency.
+                                Non-default formats don't honor these flags: --add_dir_header, --alsologtostderr, --log_backtrace_at, --log_dir, --log_file, --log_file_max_size, --logtostderr, --skip_headers, --skip_log_headers, --stderrthreshold, --log-flush-frequency.
                                 Non-default choices are currently alpha and subject to change without warning. (default "text")
 
 Misc flags:

@@ -1,5 +1,5 @@
-I0731 04:42:30.581021   36816 registry.go:173] Registering SelectorSpread plugin
-I0731 04:42:30.581058   36816 registry.go:173] Registering SelectorSpread plugin
+I0731 04:57:25.243062   37272 registry.go:173] Registering SelectorSpread plugin
+I0731 04:57:25.243105   37272 registry.go:173] Registering SelectorSpread plugin
 The Kubernetes scheduler is a control plane process which assigns
 Pods to Nodes. The scheduler determines which Nodes are valid placements for
 each Pod in the scheduling queue according to constraints and available
@@ -119,15 +119,13 @@ Feature gate flags:
                                       CSIMigrationGCEComplete=true|false (ALPHA - default=false)
                                       CSIMigrationOpenStack=true|false (BETA - default=false)
                                       CSIMigrationOpenStackComplete=true|false (ALPHA - default=false)
-                                      CSIMigrationvSphere=true|false (BETA - default=false)
-                                      CSIMigrationvSphereComplete=true|false (BETA - default=false)
+                                      CSIMigrationvSphere=true|false (ALPHA - default=false)
+                                      CSIMigrationvSphereComplete=true|false (ALPHA - default=false)
                                       CSIStorageCapacity=true|false (ALPHA - default=false)
-                                      CSIVolumeFSGroupPolicy=true|false (ALPHA - default=false)
                                       ConfigurableFSGroupPolicy=true|false (ALPHA - default=false)
                                       CustomCPUCFSQuotaPeriod=true|false (ALPHA - default=false)
                                       DefaultPodTopologySpread=true|false (ALPHA - default=false)
                                       DevicePlugins=true|false (BETA - default=true)
-                                      DisableAcceleratorUsageMetrics=true|false (ALPHA - default=false)
                                       DynamicKubeletConfig=true|false (BETA - default=true)
                                       EndpointSlice=true|false (BETA - default=true)
                                       EndpointSliceProxying=true|false (BETA - default=true)
@@ -136,7 +134,6 @@ Feature gate flags:
                                       ExpandInUsePersistentVolumes=true|false (BETA - default=true)
                                       ExpandPersistentVolumes=true|false (BETA - default=true)
                                       ExperimentalHostUserNamespaceDefaulting=true|false (BETA - default=false)
-                                      GenericEphemeralVolume=true|false (ALPHA - default=false)
                                       HPAScaleToZero=true|false (ALPHA - default=false)
                                       HugePageStorageMediumSize=true|false (BETA - default=true)
                                       HyperVContainer=true|false (ALPHA - default=false)
@@ -188,7 +185,7 @@ Metrics flags:
 Logs flags:
 
       --logging-format string   Sets the log format. Permitted formats: "text", "json".
-                                Non-default formats don't honor these flags: --add_dir_header, --alsologtostderr, --log_backtrace_at, --log_dir, --log_file, --log_file_max_size, --logtostderr, --skip_headers, --skip_log_headers, --stderrthreshold, --vmodule, --log-flush-frequency.
+                                Non-default formats don't honor these flags: --add_dir_header, --alsologtostderr, --log_backtrace_at, --log_dir, --log_file, --log_file_max_size, --logtostderr, --skip_headers, --skip_log_headers, --stderrthreshold, --log-flush-frequency.
                                 Non-default choices are currently alpha and subject to change without warning. (default "text")
 
 Global flags:
